@@ -20,6 +20,7 @@ public class Main {
                         5) Account Statement
                         6) List Accounts
                         7) Search Accounts by Customer Name
+                        8) Balance
                         0) Exit
                     """);
             System.out.println("Enter choice: ");
@@ -28,14 +29,22 @@ public class Main {
                 case "1" -> openAccount(input,bankService);
                 case "2" -> deposit(input, bankService);
                 case "3" -> withdraw(input,bankService);
-                case "4" -> transfer(input);
-                case "5" -> Statement(input);
+                case "4" -> transfer(input,bankService);
+                case "5" -> statement(input,bankService);
                 case "6" -> listAccounts(input,bankService);
                 case "7" -> searchAccounts(input);
+                case "8" -> balance(input,bankService);
                 case "0" ->  running = false;
                 
             }
         }
+    }
+
+    private static void balance(Scanner input,BankService bankService) {
+        System.out.println("Enter AccountNumber: ");
+        String accountNumber = input.nextLine().trim();
+        Double amount = bankService.balance(accountNumber);
+        System.out.println("Your balance is " + amount);
     }
 
     private static void openAccount(Scanner input,BankService bankService) {
@@ -80,12 +89,23 @@ public class Main {
         System.out.println("withdrawal successfully");
     }
 
-    private static void transfer(Scanner input) {
-
-
+    private static void transfer(Scanner input, BankService bankService) {
+        System.out.println("Enter FROM Account Number: ");
+        String accountNumber = input.nextLine().trim();
+        System.out.println("Enter TO Account Number: ");
+        String accountNumber2 = input.nextLine().trim();
+        System.out.println("Enter Note: ");
+        String note = input.nextLine().trim();
+        System.out.println("Enter Amount to Transfer: ");
+        Double amount = Double.valueOf(input.nextLine().trim());
+        bankService.transfer(accountNumber,accountNumber2,amount,note);
+        System.out.println("Transfer successfully");
     }
 
-    private static void Statement(Scanner input) {
+    private static void statement(Scanner input, BankService bankService) {
+        System.out.println("Enter Account Number: ");
+        String accountNumber = input.nextLine().trim();
+        bankService.statement(accountNumber);
     }
 
     private static void listAccounts(Scanner input,BankService bankService) {
@@ -95,6 +115,7 @@ public class Main {
     }
 
     private static void searchAccounts(Scanner input) {
+
     }
 
 }

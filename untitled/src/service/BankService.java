@@ -11,4 +11,10 @@ public interface BankService {
     void deposit(String accountNumber, Double amount, String note);
 
     void withdraw(String accountNumber, Double amount, String note);
+
+    void transfer(String accountNumber, String accountNumber2, Double amount, String note);
+
+    Double balance(String accountNumber);
+
+    void statement(String accountNumber);
 }

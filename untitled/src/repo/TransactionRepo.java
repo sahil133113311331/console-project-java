@@ -3,10 +3,7 @@ package repo;
 import domain.Account;
 import domain.Transaction;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TransactionRepo {
     Map<String, List<Transaction>> txtByAccount = new HashMap<>();
@@ -14,4 +11,9 @@ public class TransactionRepo {
     public void add(Transaction transaction) {
         txtByAccount.computeIfAbsent(transaction.getAccountNumber(),k -> new ArrayList<Transaction>()).add(transaction);
     }
+
+    public Optional<List<Transaction>> allTransection(String accountNumber) {
+       return Optional.ofNullable(txtByAccount.get(accountNumber));
+    }
+
 }
