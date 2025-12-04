@@ -69,6 +69,7 @@ public class BankServiceImpl implements BankService {
         transactionRepo.add(transaction2);
     }
 
+
     @Override
     public Double balance(String accountNumber) {
         Account account = accountRepo.findByNumber(accountNumber).orElseThrow(()-> new RuntimeException("Account number not found"+accountNumber));
