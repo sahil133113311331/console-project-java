@@ -44,4 +44,11 @@ public class Account {
     public void setBalance(Double balance) {
         this.balance = balance;
     }
+    public String toString() {
+        return String.format("%s | %.2f | %s | %s",
+                accountNumber,
+                balance,
+                accountType,
+                customerId);
+    }
 }

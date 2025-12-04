@@ -17,4 +17,6 @@ public interface BankService {
     Double balance(String accountNumber);
 
     void statement(String accountNumber);
+
+    List<Account> searchAccounts(String accountNumber);
 }

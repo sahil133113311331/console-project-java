@@ -19,10 +19,13 @@ public class Transaction {
         this.type = type;
     }
 
-    public String toString()
-    {
-        System.out.println(accountNumber+" | "+amount+" | "+timestamp+" | "+note+" | "+type);
-        return "";
+    public String toString() {
+        return String.format("%s | %.2f | %s | %s | %s",
+                accountNumber,
+                amount,
+                timestamp.toString(), // or a formatted date-time
+                note,
+                type.toString());
     }
     public Type getType() {
         return type;

@@ -17,4 +17,14 @@ public class AccountRepo {
     public List<Account> findAll(){
         return new ArrayList<Account>(accountsByNumber.values());
     }
+
+    public List<Account> searchAccountsByCustomerId(String id) {
+        List<Account> result = new ArrayList<>();
+        for(Account account:accountsByNumber.values())
+        {
+            if(account.getCustomerId().equals(id))
+                result.add(account);
+        }
+        return result;
+    }
 }
